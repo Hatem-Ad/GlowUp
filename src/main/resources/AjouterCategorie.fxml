@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterCategorieController">
+    <children>
+        <Pane prefHeight="515.0" prefWidth="718.0" style="-fx-background-color: #fff;">
+            <children>
+                <ImageView fitHeight="523.0" fitWidth="741.0" layoutY="-8.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/skin.png" />
+                    </image>
+                </ImageView>
+                <Pane fx:id="L_message" layoutX="422.0" layoutY="155.0" prefHeight="317.0" prefWidth="256.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
+                    <children>
+                        <TextField fx:id="txtNomCategorie" focusTraversable="false" layoutX="55.0" layoutY="98.0" prefHeight="34.0" prefWidth="156.0" promptText="Nom catégorie" style="-fx-background-radius: 15px;" styleClass="username-password" stylesheets="@SystemStyles.css" />
+                        <PasswordField fx:id="txtDescriptionCategorie" focusTraversable="false" layoutX="55.0" layoutY="147.0" prefHeight="34.0" prefWidth="156.0" promptText="Description Categorie" style="-fx-background-radius: 15px;" />
+                        <Button layoutX="90.0" layoutY="240.0" mnemonicParsing="false" onAction="#AjouterCategorie" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #f76be8;" styleClass="btn-add" text="Ajouter"/>
+                        <Text fill="#f76be8" layoutX="14.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une nouvelle Catégorie" wrappingWidth="243.0">
+                            <font>
+                                <Font name="Arial Bold" size="15.0" />
+                            </font>
+                        </Text>
+                        <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="28.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="img/appointment.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="34.0" fitWidth="43.0" layoutX="28.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/login username icon.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                    <effect>
+                        <InnerShadow choke="0.09" height="97.21" radius="59.8275" width="144.1">
+                            <color>
+                                <Color red="0.9686" green="0.4196" blue="0.9098" />
+                            </color>
+                        </InnerShadow>
+                    </effect>
+                </Pane>
+                <ImageView fitHeight="97.0" fitWidth="256.0" layoutX="458.0" layoutY="94.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/icone-1 1.png" />
+                    </image>
+                </ImageView>
+
+
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.UpdateStepController">
+    <Text text="Modifier l'étape" style="-fx-font-size: 20px;"/>
+    <TextField fx:id="txtStepName" promptText="Nom de l'étape"/>
+    <TextField fx:id="txtStepDescription" promptText="Description de l'étape"/>
+    <TextField fx:id="txtStepOrder" promptText="Ordre de l'étape"/>
+    <Button text="Mettre à jour" onAction="#handleUpdateStep"/>
+    <Button text="Annuler" onAction="#handleCancel"/>
+</HBox>
+
+

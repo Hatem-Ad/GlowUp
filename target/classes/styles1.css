@@ -1,0 +1,67 @@
+/* Style global pour l'arrière-plan */
+.root {
+    -fx-background-color: #EAEEF4; /* Couleur d'arrière-plan claire */
+}
+
+.login-background1 {
+    -fx-background-image: url("/source/healthcare2.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: 100% 100%;/* L'image prend toute la taille de la fenêtre */
+}
+
+/* Style pour les labels */
+.label {
+    -fx-text-fill: #353A56; /* Couleur du texte des labels */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px; /* Taille du texte */
+    -fx-padding: 5px;
+}
+
+/* Style des champs de texte */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #748CF1;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: #6780E2; /* Couleur de la bordure lorsque le champ est en focus */
+}
+
+/* Style du bouton */
+.button {
+    -fx-background-color: #748CF1;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 15px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0.5, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #6780E2; /* Couleur de survol */
+}
+
+.button:pressed {
+    -fx-background-color: #3f5bba; /* Couleur lorsque le bouton est pressé */
+}
+
+/* Style de la disposition de l'interface */
+.anchor-pane {
+    -fx-padding: 20px; /* Espacement autour des éléments */
+}
+
+/* Style spécifique pour les champs de texte */
+#txtName, #txtDescription, #txtCategoryId {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #748CF1;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}

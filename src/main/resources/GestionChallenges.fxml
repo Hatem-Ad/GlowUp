@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20" fx:controller="Controllers.GestionChallengesController" stylesheets="@styleChallenges.css">
+    <children>
+        <VBox spacing="10" layoutX="20" layoutY="20" prefWidth="760" prefHeight="600">
+            <!-- Table des challenges -->
+            <TableView fx:id="tableChallenges" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="colName" text="Nom" prefWidth="150" />
+                    <TableColumn fx:id="colDescription" text="Description" prefWidth="300" />
+                    <TableColumn fx:id="colCategoryId" text="Catégorie ID" prefWidth="100" />
+                </columns>
+            </TableView>
+
+            <!-- Formulaire pour ajouter un challenge -->
+            <HBox spacing="10">
+                <TextField fx:id="txtName" promptText="Nom du challenge" />
+                <TextField fx:id="txtDescription" promptText="Description" />
+                <ComboBox fx:id="comboCategory" promptText="Choisir une catégorie" prefWidth="150" />
+                <Button fx:id="btnAdd" text="Ajouter" />
+            </HBox>
+
+            <!-- Barre de recherche et actions -->
+            <HBox spacing="10">
+                <TextField fx:id="txtSearch" promptText="Rechercher un challenge" prefWidth="300" />
+                <Button fx:id="btnSearch" text="Rechercher" />
+                <Button fx:id="btnReset" text="Réinitialiser" />
+                <Button fx:id="btnDelete" text="Supprimer" />
+            </HBox>
+
+            <!-- Gestion des étapes -->
+            <VBox spacing="10">
+                <Label text="Étapes pour le challenge sélectionné :" />
+                <ListView fx:id="listViewSteps" prefHeight="150" />
+                <HBox spacing="10">
+                    <TextField fx:id="txtStepName" promptText="Nom de l'étape" />
+                    <TextField fx:id="txtStepDescription" promptText="Description de l'étape" />
+                    <TextField fx:id="txtStepOrder" promptText="Ordre de l'étape" />
+
+                    <Button fx:id="btnAddStep" text="Ajouter Étape" />
+                    <Button fx:id="btnUpdateStep" text="Mettre à jour Étape" />
+                    <Button fx:id="btnDeleteStep" text="Supprimer Étape" />
+
+                </HBox>
+            </VBox>
+
+            <!-- Graphique des statistiques-->
+            <LineChart fx:id="statsChart" prefHeight="300" prefWidth="700">
+                <xAxis>
+                    <CategoryAxis fx:id="xAxis" label="Catégories" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis" label="Nombre de Challenges" />
+                </yAxis>
+            </LineChart>
+        </VBox>
+    </children>
+</AnchorPane>
+
+
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800" prefWidth="1200" style="-fx-background-color: #1E1B2E;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controllers.RegisterController">
+    <children>
+        <HBox prefHeight="700" prefWidth="1200" spacing="0">
+            <children>
+                <!-- Partie Gauche -->
+                <StackPane prefWidth="400" style="-fx-background-color: #272142;">
+                    <children>
+                        <ImageView fitHeight="800" fitWidth="551.0">
+                            <image>
+                                <Image url="@/img/wom.jpg" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </StackPane>
+
+                <!-- Partie Droite -->
+                <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="30" style="-fx-background-color: #1E1B2E; -fx-padding: 50;">
+                    <children>
+                        <!-- Titre -->
+                        <Text fill="WHITE" text="Create an account">
+                            <font>
+                                <Font name="Arial Bold" size="26" />
+                            </font>
+                        </Text>
+                        <HBox spacing="5">
+                            <children>
+                                <Text fill="#B8B6C9" text="Already have an account?" />
+                                <Hyperlink onAction="#openLoginForm" style="-fx-text-fill: #A38DFF;" text="Log in" />
+                            </children>
+                        </HBox>
+                        <TextField fx:id="emailField" promptText="Email" style="-fx-background-color: #272142; -fx-text-fill: white;" />
+                        <PasswordField fx:id="passwordField" promptText="Enter your password" style="-fx-background-color: #272142; -fx-text-fill: white;" />
+                        <PasswordField fx:id="confirmPasswordField" promptText="Confirm your password" style="-fx-background-color: #272142; -fx-text-fill: white;" />
+
+                        <!-- Case à cocher -->
+                        <HBox alignment="CENTER_LEFT" spacing="5">
+                            <children>
+                                <CheckBox style="-fx-background-color: white;" />
+                                <Label text="I agree to the" textFill="WHITE" />
+                                <Hyperlink style="-fx-text-fill: #A38DFF;" text="Terms &amp; Conditions" />
+                            </children>
+                        </HBox>
+
+                        <!-- Bouton "Create Account" -->
+                        <Button prefWidth="300" fx:id="registerButton" onAction="#handleRegister"  style="-fx-background-color: #A38DFF; -fx-text-fill: white; -fx-font-size: 16px;" text="Create account" />
+
+                        <!-- Ou autre option d'inscription -->
+                        <Label text="Or register with" textFill="#B8B6C9" />
+                        <HBox spacing="20">
+                            <children>
+                                <Button prefWidth="120" style="-fx-background-color: #DD4B39; -fx-text-fill: white;" text="Google" />
+                                <Button prefWidth="120" style="-fx-background-color: #333333; -fx-text-fill: white;" text="Apple" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
