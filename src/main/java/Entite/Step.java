@@ -6,6 +6,23 @@ public class Step {
     private String name;
     private String description;
     private int stepOrder;
+    private int category_id;
+
+    public int getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
+    }
+
+    public Step(int challengeId, String name, String description, int stepOrder, int category_id) {
+        this.challengeId = challengeId;
+        this.name = name;
+        this.description = description;
+        this.stepOrder = stepOrder;
+        this.category_id = category_id;
+    }
 
     // Constructeur
     public Step(int id, int challengeId, String name, String description, int stepOrder) {
