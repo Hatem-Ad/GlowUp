@@ -5,6 +5,9 @@ import Service.ChallengeService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -14,10 +17,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import Service.SessionManager;
 import Service.ParticipationService;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.SQLException;
 
 import java.util.List;
@@ -184,22 +191,102 @@ public class ChallengesListController {
         loadStatistics(userId); // Charger les statistiques
     }
 
-
+/*
     private void handleParticipation(Challenge challenge) {
         try {
             int userId = SessionManager.getInstance().getUserId();
             boolean success = challengeService.addParticipation(userId, challenge.getId());
 
             if (success) {
+                // Afficher l'alerte de succès
                 showAlert("Participation réussie", "Vous participez maintenant au challenge : " + challenge.getName());
+
+                // Charger l'écran des étapes après la participation
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParticipationChallenge.fxml"));
+                Parent root = loader.load();
+
+                // Passer le challenge et l'utilisateur au contrôleur de l'écran des étapes
+                ParticipationChallengeController etapesController = loader.getController();
+                etapesController.setChallenge(challenge);
+                etapesController.setUserId(userId);
+
+                // Changer la scène pour l'écran des étapes
+                AnchorPane pane = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(pane));
+                stage.setTitle("Liste des étapes");
+                stage.show();
+
+
             } else {
                 showAlert("Échec", "Vous êtes déjà inscrit à ce challenge.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert("Erreur", "Une erreur est survenue lors de l'inscription au challenge.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Une erreur est survenue lors du chargement de l'écran des étapes.");
+        }
+    }*/
+
+    private void handleParticipation(Challenge challenge) {
+        try {
+            // Vérifier si l'utilisateur est connecté
+            int userId = SessionManager.getInstance().getUserId();
+
+            // Vérifier si l'utilisateur a déjà participé au challenge et a terminé (progression à 100%)
+            boolean alreadyParticipated = challengeService.hasUserParticipatedAndCompleted(userId, challenge.getId());
+
+            if (alreadyParticipated) {
+                // Si l'utilisateur a déjà terminé le challenge, afficher une alerte
+                showAlert("Participation déjà terminée", "Vous avez déjà terminé ce challenge et ne pouvez pas y participer à nouveau.");
+                return; // Sortir de la méthode si l'utilisateur ne peut pas participer
+            }
+
+            // Vérifier si l'utilisateur est déjà inscrit à ce challenge sans l'avoir terminé
+            boolean alreadyRegistered = challengeService.hasUserAlreadyParticipated(userId, challenge.getId());
+
+            if (!alreadyRegistered) {
+                // Si l'utilisateur n'est pas encore inscrit, ajouter la participation
+                boolean success = challengeService.addParticipation(userId, challenge.getId());
+
+                if (success) {
+                    // Afficher une alerte de succès
+                    showAlert("Participation réussie", "Vous participez maintenant au challenge : " + challenge.getName());
+                } else {
+                    showAlert("Échec", "Une erreur est survenue lors de l'inscription au challenge.");
+                    return;
+                }
+            } else {
+                // Si l'utilisateur est déjà inscrit, mais pas terminé, afficher un message approprié
+                showAlert("Participation en cours", "Vous avez déjà commencé ce challenge. Vous pouvez le recommencé.");
+            }
+
+            // Charger l'écran des étapes
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParticipationChallenge.fxml"));
+            Parent root = loader.load();
+
+            // Passer les données nécessaires au contrôleur
+            ParticipationChallengeController etapesController = loader.getController();
+            etapesController.setUserId(userId);
+            etapesController.setChallenge(challenge);
+
+            // Obtenir la scène actuelle et afficher la nouvelle scène
+            Stage currentStage = (Stage) challengesTilePane.getScene().getWindow();
+            currentStage.setScene(new Scene(root));
+            currentStage.setTitle("Liste des étapes du challenge");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Une erreur est survenue lors de l'inscription au challenge.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Une erreur est survenue lors du chargement de l'écran des étapes.");
         }
     }
+
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
