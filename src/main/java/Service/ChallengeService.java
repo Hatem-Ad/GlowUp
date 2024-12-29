@@ -298,4 +298,32 @@ public class ChallengeService implements ChallengeServiceInterface<Challenge>{
         int res = pre.executeUpdate();    return res > 0;
         // Retourne vrai si la mise à jour a réussi
         }*/
+   public boolean hasUserParticipatedAndCompleted(int userId, int challengeId) throws SQLException {
+       String query = "SELECT progression FROM participations WHERE user_id = ? AND challenge_id = ?";
+       try (PreparedStatement stmt = con.prepareStatement(query)) {
+           stmt.setInt(1, userId);
+           stmt.setInt(2, challengeId);
+           ResultSet rs = stmt.executeQuery();
+           if (rs.next()) {
+               int progression = rs.getInt("progression");
+               return progression == 100; // Retourne true si la progression est de 100%
+           }
+       }
+       return false;
+   }
+
+    public boolean hasUserAlreadyParticipated(int userId, int challengeId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM participations WHERE user_id = ? AND challenge_id = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            stmt.setInt(2, challengeId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0; // Retourne true si l'utilisateur est déjà inscrit
+            }
+        }
+        return false;
+    }
+
 }
