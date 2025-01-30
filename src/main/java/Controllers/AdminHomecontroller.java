@@ -1,11 +1,11 @@
 package Controllers;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import Service.CategorieService;
-import Service.UserService;
+
+import Entite.Evenement;
+import Service.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -86,18 +86,79 @@ public class AdminHomecontroller {
     private TableColumn<User, String> PS;
     @FXML
     private Label ppassword;
+    @FXML
+    private EvenementService evenementsServicee = new EvenementService();
+    @FXML
+    private ObservableList<Evenement> evenementsListt = FXCollections.observableArrayList();
+    @FXML
+    private TableView<Evenement> evenementsTablee;
+    @FXML
+    private TableColumn<Evenement, String> nomColumnn;
+    @FXML
+    private TableColumn<Evenement, String> descriptionnColumnn;
+    @FXML
+    private TableColumn<Evenement, Void> actionColumn;
+
     UserService userService = new UserService();
+
+    @FXML
+    private Hyperlink adminNameLink;
+    @FXML
+    public void setAdminName(String email) {
+        adminNameLink.setText(email); // Mettre à jour le texte du lien
+    }
+
 
     @FXML
     private void initialize() {
         loadCategories();
+        loadevenements();
         loadUsers();
         nameColumnn.setCellValueFactory(new PropertyValueFactory<>("name"));
         descriptionColumnn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        nomColumnn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        descriptionnColumnn.setCellValueFactory(new PropertyValueFactory<>("description"));
         actionsColumn.setCellFactory(new Callback<TableColumn<Categorie, Void>, TableCell<Categorie, Void>>() {
             @Override
             public TableCell<Categorie, Void> call(TableColumn<Categorie, Void> param) {
                 return new TableCell<Categorie, Void>() {
+                    private final Button detailsButton = new Button("Détails");
+                    {
+                        detailsButton.setStyle("-fx-background-color: #4c5a75; -fx-text-fill: white; "
+                                + "-fx-font-size: 14px; -fx-padding: 5px 10px; "
+                                + "-fx-border-radius: 5px; -fx-background-radius: 5px; -fx-cursor: hand;");
+                        detailsButton.setOnAction(e -> {
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GestionChallenges.fxml"));
+                                AnchorPane pane = loader.load();
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(pane));
+                                stage.setTitle("Gestion des Challenges");
+                                stage.show();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                                showAlert("Erreur", "Impossible de charger l'interface de gestion des challenges.");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            HBox hbox = new HBox(5, detailsButton);
+                            setGraphic(hbox);
+                        }
+                    }
+                };
+            }
+        });
+        actionColumn.setCellFactory(new Callback<TableColumn<Evenement, Void>, TableCell<Evenement, Void>>() {
+            @Override
+            public TableCell<Evenement, Void> call(TableColumn<Evenement, Void> param) {
+                return new TableCell<Evenement, Void>() {
                     private final Button detailsButton = new Button("Détails");
                     {
                         detailsButton.setStyle("-fx-background-color: #4c5a75; -fx-text-fill: white; "
@@ -152,6 +213,14 @@ public class AdminHomecontroller {
         }
         categoriesTablee.setItems(categoriesListt);
     }
+    private void loadevenements() {
+        try {
+            evenementsListt.setAll(evenementsServicee.getAllEvenements());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        evenementsTablee.setItems(evenementsListt);
+    }
     private void loadUsers() {
         try {
             ObservableList<User> users = FXCollections.observableArrayList(userService.getAllUsersWithRoleAdmin());
@@ -189,6 +258,21 @@ public class AdminHomecontroller {
     }
 
     @FXML
+    private void handleAddEvent() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEvenement.fxml"));
+            AnchorPane pane = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(pane));
+            stage.setTitle("Ajouter Event");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger la fenêtre d'ajout de Event.");
+        }
+    }
+
+    @FXML
     private void handleViewCategories() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ConsulterCategories.fxml"));
@@ -203,6 +287,20 @@ public class AdminHomecontroller {
         }
     }
 
+    @FXML
+    private void handleViewevent() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ConsulterEvenements.fxml"));
+            AnchorPane pane = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(pane));
+            stage.setTitle("Liste des Evenements");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger la fenêtre des evenements.");
+        }
+    }
 
     // Méthode pour afficher une alerte
     private void showAlert(String title, String message) {
@@ -211,6 +309,20 @@ public class AdminHomecontroller {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    @FXML
+    private void handleViewusers() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Consulterusers.fxml"));
+            AnchorPane pane = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(pane));
+            stage.setTitle("Liste des Catégories");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger la fenêtre des utilsateurs.");
+        }
     }
 
 }
