@@ -3,7 +3,7 @@ package Entite;
 public class Categorie {
 
     private int id;
-    private String name;
+    private String name;    
     private String description;
 
     // Constructeur avec ID (pour récupérer les catégories existantes)
