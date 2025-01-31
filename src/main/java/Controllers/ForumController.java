@@ -100,7 +100,7 @@ public class ForumController {
     private void openRecaptchaPage() {
         try {
             // Ouvrir la page du reCAPTCHA
-            URI uri = new URI("http://localhost:63342/Project/sante/recaptcha.html?_ijt=g8j1q59fslhnos36lg4k6rg6uj&_ij_reload=RELOAD_ON_SAVE");
+            URI uri = new URI("http://localhost:63342/GlowUp/sante/recaptcha.html?_ijt=cfs31ols3igqh44gaf9q98o8v4&_ij_reload=RELOAD_ON_SAVE");
             Desktop.getDesktop().browse(uri);
 
             // Attendre quelques secondes pour que l'utilisateur complète le reCAPTCHA
