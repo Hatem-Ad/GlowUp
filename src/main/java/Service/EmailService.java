@@ -12,6 +12,9 @@ import java.util.List;
 
 public class EmailService {
 
+    // Remplacez par vos vraies clés API Mailjet
+    private static final String API_KEY = "14f4c3028907d2c2e2933b61b732b8f3"; // Remplacez par votre clé publique Mailjet
+    private static final String API_SECRET = "d9ea368b908651371879bf1b67255f4c"; // Remplacez par votre clé privée Mailjet
 
     private MailjetClient client;
 

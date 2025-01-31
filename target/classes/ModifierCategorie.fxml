@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -16,44 +23,39 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierCategorieController">
+<AnchorPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1162.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierCategorieController">
     <children>
-        <Pane prefHeight="515.0" prefWidth="718.0" style="-fx-background-color: #fff;">
+        <Pane prefHeight="515.0" prefWidth="718.0" style="-fx-background-color: #fff;" />
+        <ImageView fitHeight="810.0" fitWidth="1179.0" layoutX="-8.0" layoutY="-5.0">
+            <image>
+                <Image url="@/img/top.jpg" />
+            </image>
+        </ImageView>
+        <Pane fx:id="L_message" layoutX="572.0" layoutY="364.0" prefHeight="411.0" prefWidth="541.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
             <children>
-                <ImageView fitHeight="523.0" fitWidth="741.0" layoutY="-8.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@img/fasa5.png" />
-                    </image>
-                </ImageView>
-                <Pane fx:id="L_message" layoutX="422.0" layoutY="155.0" prefHeight="317.0" prefWidth="256.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
-                    <children>
-                        <TextField fx:id="txtIdCategorie" layoutX="55.0" layoutY="80.0" prefHeight="34.0" prefWidth="156.0" />
-                        <TextField fx:id="txtNomCategorie" layoutX="55.0" layoutY="130.0" prefHeight="34.0" prefWidth="156.0" />
-                        <TextField fx:id="txtDescriptionCategorie" layoutX="55.0" layoutY="180.0" prefHeight="34.0" prefWidth="156.0" />
-                        <Button layoutX="90.0" layoutY="240.0" mnemonicParsing="false" onAction="#ModifierCategorie" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #35800b;" styleClass="btn-add" text="Modifier" />
-                        <Text fill="#35800b" layoutX="14.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier la Catégorie" wrappingWidth="243.0">
-                            <font>
-                                <Font name="Arial Bold" size="15.0" />
-                            </font>
-                        </Text>
-
-                    </children>
-                    <effect>
-                        <InnerShadow choke="0.09" height="97.21" radius="59.8275" width="144.1">
-                            <color>
-                                <Color red="0.1373" green="0.5019" blue="0.0431" />
-                            </color>
-                        </InnerShadow>
-                    </effect>
-                </Pane>
-                <ImageView fitHeight="97.0" fitWidth="256.0" layoutX="458.0" layoutY="94.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@img/medical Staff.png" />
-                    </image>
-                </ImageView>
-
+                <TextField fx:id="txtIdCategorie" layoutX="55.0" layoutY="80.0" prefHeight="43.0" prefWidth="365.0" />
+                <TextField fx:id="txtNomCategorie" layoutX="55.0" layoutY="139.0" prefHeight="43.0" prefWidth="365.0" />
+                <TextField fx:id="txtDescriptionCategorie" layoutX="55.0" layoutY="206.0" prefHeight="43.0" prefWidth="365.0" />
+                <Button layoutX="249.0" layoutY="309.0" mnemonicParsing="false" onAction="#ModifierCategorie" prefHeight="50.0" prefWidth="174.0" style="-fx-background-color: #35800b;" styleClass="btn-add" text="Modifier" />
+                <Text fill="#35800b" layoutX="119.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier la Catégorie" wrappingWidth="244.0">
+                    <font>
+                        <Font name="Arial Bold" size="24.0" />
+                    </font>
+                </Text>
 
             </children>
+            <effect>
+                <InnerShadow choke="0.09" height="97.21" radius="59.8275" width="144.1">
+                    <color>
+                        <Color blue="0.0431" green="0.5019" red="0.1373" />
+                    </color>
+                </InnerShadow>
+            </effect>
         </Pane>
+        <ImageView fitHeight="110.0" fitWidth="121.0" layoutX="622.0" layoutY="281.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/parametre-dutilisateur.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

@@ -3,7 +3,9 @@ package Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import Entite.Evenement;
 import Service.*;
 import javafx.collections.FXCollections;
@@ -203,6 +205,15 @@ public class AdminHomecontroller {
             showErrorDialog("Erreur lors du chargement des administrateurs", "Une erreur s'est produite lors de la récupération des utilisateurs avec le rôle d'administrateur.");
             e.printStackTrace();
         }
+        // Rafraîchir automatiquement toutes les 10 secondes
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+            loadCategories();
+            loadevenements();
+            loadUsers();
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
     }
 
     private void loadCategories() {

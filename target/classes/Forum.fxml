@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" prefHeight="483.0" prefWidth="606.0" stylesheets="@stylesforum.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ForumController">
+    <!-- Top Bar -->
+    <top>
+        <Label alignment="CENTER" prefHeight="42.0" prefWidth="948.0" style="-fx-font-size: 18px; -fx-text-fill: white; -fx-background-color: purple; -fx-padding: 10px;" text="Bienvenue à notre Forum de discussion" />
+    </top>
+
+    <!-- Left Navigation Panel -->
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #1f1b28; -fx-padding: 20px;">
+            <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="GlowUp" />
+            <VBox spacing="5" style="-fx-padding: 10px;">
+                <Button prefHeight="27.0" prefWidth="87.0" styleClass="nav-button" text="Catégories" />
+                <Button styleClass="nav-button" text="Événements" />
+                <Button prefHeight="27.0" prefWidth="89.0" styleClass="nav-button" text="Challenge" />
+                <Button prefHeight="27.0" prefWidth="89.0" styleClass="nav-button" text="Forum" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Center Panel (Main Content) -->
+    <center>
+        <VBox prefHeight="465.0" prefWidth="471.0" spacing="10" style="-fx-padding: 20px;">
+            <!-- Header -->
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="237.0" style="-fx-font-size: 16px; -fx-text-fill: white; -fx-background-color: purple; -fx-padding: 5px;" text="Zone de discussion" />
+
+            <!-- Discussion Area -->
+            <ListView fx:id="discussionList" prefHeight="265.0" prefWidth="401.0" style="-fx-border-color: blue; -fx-border-width: 2px; -fx-background-color: #2e2a3b; -fx-text-fill: white;" />
+
+            <!-- Input Fields -->
+            <HBox spacing="10">
+                <TextField fx:id="userNameField" prefHeight="19.0" prefWidth="167.0" promptText="Entrez votre nom ou pseudo" styleClass="text-field" />
+            </HBox>
+
+            <TextField fx:id="messageField" prefHeight="63.0" prefWidth="402.0" promptText="Entrez votre message ici..." styleClass="text-field" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                <children>
+
+                    <!-- Send Button -->
+                    <Button fx:id="sendButton" prefHeight="26.0" prefWidth="84.0" styleClass="send-button" text="Envoyer" />
+                    <Button fx:id="updateButton" prefHeight="26.0" prefWidth="82.0" styleClass="modifier-button" text="Modifier">
+                        <HBox.margin>
+                            <Insets left="140.0" right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="deleteButton" styleClass="modifier-button" text="Supprimer" />
+                </children>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

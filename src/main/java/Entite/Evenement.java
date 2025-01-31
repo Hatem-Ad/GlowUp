@@ -1,21 +1,29 @@
 package Entite;
 
+import javafx.scene.control.TextField;
+
 public class Evenement {
     private int id;
     private String name;
     private String description;
-    private String date;
+
 
     // Constructeurs
     public Evenement() {
     }
 
-    public Evenement(int id, String name, String description, String date) {
+    public Evenement(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.date = date;
+
     }
+    // Constructeur sans ID (pour créer de nouvelles catégories)
+    public Evenement(String name, String description) {
+        this.name = name;
+        this.description = description;}
+
+
 
     // Getters et Setters
     public int getId() {
@@ -42,13 +50,6 @@ public class Evenement {
         this.description = description;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     // Méthode toString pour afficher les détails d'un événement
     @Override
@@ -57,7 +58,6 @@ public class Evenement {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", date='" + date + '\'' +
                 '}';
     }
 }

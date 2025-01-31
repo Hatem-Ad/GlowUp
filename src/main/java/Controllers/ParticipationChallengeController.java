@@ -141,7 +141,7 @@ public class ParticipationChallengeController {
     private void generatePDF() {
         try {
             // Spécifier où enregistrer le fichier PDF
-            String filePath = "C:\\Users\\Lenovo\\Desktop\\3_année_cycle_ing\\java\\TP\\ChallengeCompletion.pdf"; // Vous pouvez ajuster le chemin
+            String filePath = "C:\\Users\\benro\\Desktop\\Cours Alternance\\3eme\\Projet_GUI\\Préfinal\\Project\\ChallengeCompletion.pdf"; // Vous pouvez ajuster le chemin
 
             // Créer un PdfWriter pour écrire dans le document
             PdfWriter writer = new PdfWriter(filePath);

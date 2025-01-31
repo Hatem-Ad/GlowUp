@@ -1,0 +1,57 @@
+/* Global styles */
+.root {
+    -fx-font-family: 'SansSerif';
+    -fx-background-color: #2e2a3b;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-color: #3c374a;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+.nav-button:hover {
+    -fx-background-color: #574d67;
+}
+
+/* Text Area */
+.text-area {
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+    -fx-background-color: #2e2a3b;
+    -fx-text-fill: white;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-background-color: #1f1b28;
+    -fx-text-fill: white;
+    -fx-border-color: #6a5acd;
+    -fx-border-radius: 5px;
+}
+
+/* Send Button */
+.send-button {
+    -fx-background-color: #45d647;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+.modifier-button {
+    -fx-background-color: #d64545;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+.send-button:hover {
+    -fx-background-color: #bb3434;
+}

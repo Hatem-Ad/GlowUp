@@ -3,11 +3,11 @@ package Entite;
 public class Categorie {
 
     private int id;
-    private String name;    
+    private String name;
     private String description;
 
     // Constructeur avec ID (pour récupérer les catégories existantes)
-    public Categorie(int id, String name, String description) { 
+    public Categorie(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController" style="-fx-background-color: #1E1B2E;">
+<AnchorPane prefHeight="800" prefWidth="1162.0" style="-fx-background-color: #1E1B2E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
     <children>
-        <HBox layoutX="0" layoutY="0" spacing="0" style="-fx-padding: 0;">
+        <HBox layoutX="-58.0" prefHeight="700" prefWidth="1200" spacing="0">
             <children>
                 <!-- Partie Gauche -->
-                <StackPane style="-fx-background-color: #272142;">
+                <StackPane prefWidth="400" style="-fx-background-color: #272142;">
                     <children>
-                        <ImageView fitWidth="800" fitHeight="700" preserveRatio="true">
+                        <ImageView fitHeight="800" fitWidth="551.0">
                             <image>
                                 <Image url="@/img/men-wom.jpg" />
                             </image>
@@ -24,51 +25,55 @@
                 </StackPane>
 
                 <!-- Partie Droite -->
-                <VBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #1E1B2E; -fx-padding: 50;" maxWidth="671.0">
+                <VBox alignment="CENTER_LEFT" prefHeight="800.0" prefWidth="671.0" spacing="30" style="-fx-background-color: #1E1B2E; -fx-padding: 50;">
                     <children>
                         <!-- Titre -->
-                        <Text fill="WHITE" text="Welcome back" textAlignment="CENTER">
+                        <Text fill="WHITE" text="Welcome back" textAlignment="CENTER" wrappingWidth="533.62890625">
                             <font>
                                 <Font name="Arial Bold" size="48.0" />
                             </font>
                         </Text>
-                        <Text fill="WHITE" text="Please enter your details" textAlignment="CENTER">
+                        <Text fill="WHITE" text="Please enter your details " textAlignment="CENTER" wrappingWidth="516.62890625">
                             <font>
                                 <Font name="Arial Bold" size="13.0" />
                             </font>
                         </Text>
-
-                        <!-- Champs de saisie -->
-                        <TextField fx:id="emailField" promptText="Email" style="-fx-background-color: #272142; -fx-text-fill: white;">
+                        <HBox spacing="5" />
+                        <TextField fx:id="emailField" pickOnBounds="false" promptText="Email" style="-fx-background-color: #272142; -fx-text-fill: white;">
                             <font>
                                 <Font size="18.0" />
-                            </font>
-                        </TextField>
+                            </font></TextField>
                         <PasswordField fx:id="passwordField" promptText="Enter your password" style="-fx-background-color: #272142; -fx-text-fill: white;">
                             <font>
                                 <Font size="18.0" />
-                            </font>
-                        </PasswordField>
-
-                        <!-- Lien mot de passe oublié -->
-                        <HBox alignment="CENTER_LEFT" spacing="5" maxWidth="200.0">
+                            </font></PasswordField>
+                        <HBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="209.0" spacing="20">
                             <children>
+                                <Text fill="#B8B6C9" />
                                 <Hyperlink onAction="#handleResetPassword" style="-fx-text-fill: #A38DFF;" text="Forget password ?" />
                             </children>
                         </HBox>
 
-                        <!-- Bouton Login -->
-                        <Button onAction="#handleLogin" text="Log In" style="-fx-background-color: #DD4B39; -fx-text-fill: white;" prefHeight="31.0">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Button>
 
-                        <!-- Lien pour s'inscrire -->
+                        <!-- Case à cocher -->
+                        <HBox alignment="CENTER_LEFT" spacing="5" />
+                        <HBox prefHeight="39.0" prefWidth="267.0" spacing="20">
+                            <children>
+                                <Button onAction="#handleLogin" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: #DD4B39; -fx-text-fill: white;" text="Log In ">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font></Button>
+                            </children>
+                        </HBox>
+                        <HBox spacing="20" />
                         <HBox spacing="20">
                             <children>
-                                <Text fill="WHITE" text="Don't have an account?" />
-                                <Button onAction="#openRegistrationForm" text="Sign Up" style="-fx-background-color: #DD4B39; -fx-text-fill: white;" prefHeight="31.0">
+                                <Text fill="WHITE" text="D'ont have an account ?" wrappingWidth="188.62890625">
+                                    <font>
+                                        <Font name="Arial Bold" size="13.0" />
+                                    </font>
+                                </Text>
+                                <Button onAction="#openRegistrationForm" prefHeight="31.0" prefWidth="201.0" style="-fx-background-color: #DD4B39; -fx-text-fill: white;" text="Sign Up">
                                     <font>
                                         <Font size="18.0" />
                                     </font>

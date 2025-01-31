@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategorieService implements CategorieServiceInterface<Categorie> {
+public class CategorieService implements Service<Categorie> {
     private Connection con = Test.getInstance().getCon();
     @Override
 

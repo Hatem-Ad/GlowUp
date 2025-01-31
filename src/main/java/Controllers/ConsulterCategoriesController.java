@@ -132,7 +132,7 @@ public class ConsulterCategoriesController {
                     categoriesList.remove(category);
                     showAlert("Succès", "Catégorie supprimée avec succès.", AlertType.INFORMATION);
                 } else {
-                    showAlert("Erreur", "Erreur lors de la suppression de la catégorie.", AlertType.ERROR);   
+                    showAlert("Erreur", "Erreur lors de la suppression de la catégorie.", AlertType.ERROR);
                 }
             }
         });

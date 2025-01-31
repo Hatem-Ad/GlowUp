@@ -117,4 +117,25 @@ public class ConsulterUsersController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    @FXML
+    private void searchUsers() {
+        String searchText = searchField.getText().toLowerCase().trim();
+
+        if (searchText.isEmpty()) {
+            usersTable.setItems(userList); // Réinitialiser la table avec tous les utilisateurs
+            return;
+        }
+
+        ObservableList<User> filteredList = FXCollections.observableArrayList();
+
+        for (User user : userList) {
+            if (user.getEmail().toLowerCase().contains(searchText)) { // Filtrage par email (nom)
+                filteredList.add(user);
+            }
+        }
+
+        usersTable.setItems(filteredList);
+    }
+
 }

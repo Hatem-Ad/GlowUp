@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainpane" prefHeight="515.0" prefWidth="718.0"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.ModifierEvenementsController">
+
+    <children>
+        <Pane prefHeight="515.0" prefWidth="718.0" style="-fx-background-color: linear-gradient(to right, #141E30, #243B55);">
+            <children>
+
+                <!-- Background Image with slight transparency -->
+                <ImageView fitHeight="523.0" fitWidth="741.0" layoutY="-8.0" opacity="0.2"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/marat.jpg"/>
+                    </image>
+                </ImageView>
+
+                <!-- Form Container with Glass Effect -->
+                <Pane fx:id="L_message" layoutX="420.0" layoutY="140.0" prefHeight="350.0" prefWidth="260.0"
+                      style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-background-radius: 20px;
+                              -fx-border-color: rgba(255,255,255,0.5); -fx-border-width: 1.5px; -fx-border-radius: 20px;">
+                    <effect>
+                        <DropShadow color="#00000050" radius="10"/>
+                    </effect>
+                    <children>
+
+                        <Text fill="white" layoutX="30.0" layoutY="45.0" text="Modifier un Événement">
+                            <font>
+                                <Font name="Arial Bold" size="16.0"/>
+                            </font>
+                        </Text>
+
+                        <TextField fx:id="txtIdEvent" layoutX="30.0" layoutY="80.0" prefHeight="34.0" prefWidth="200.0"
+                                   promptText="ID Événement"
+                                   style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #ccc; -fx-padding: 5px;"/>
+                        <TextField fx:id="txtNomEvent" layoutX="30.0" layoutY="130.0" prefHeight="34.0" prefWidth="200.0"
+                                   promptText="Nom de l'événement"
+                                   style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #ccc; -fx-padding: 5px;"/>
+                        <TextField fx:id="txtDescriptionEvent" layoutX="30.0" layoutY="180.0" prefHeight="34.0" prefWidth="200.0"
+                                   promptText="Description"
+                                   style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #ccc; -fx-padding: 5px;"/>
+
+                        <!-- Modifier Button with Hover Effect -->
+                        <Button layoutX="75.0" layoutY="250.0" mnemonicParsing="false" onAction="#ModifierEvent"
+                                prefHeight="40.0" prefWidth="110.0"
+                                style="-fx-background-color: linear-gradient(to right, #36D1DC, #5B86E5);
+                                        -fx-background-radius: 20px; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;
+                                        -fx-cursor: hand; -fx-transition: 0.3s;">
+                            <text>Modifier</text>
+                        </Button>
+
+                        <Button layoutX="75.0" layoutY="300.0" mnemonicParsing="false"
+                                prefHeight="40.0" prefWidth="110.0"
+                                style="-fx-background-color: rgba(255, 255, 255, 0.2);
+                                        -fx-background-radius: 20px; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-color: white;">
+                            <text>Annuler</text>
+                        </Button>
+                    </children>
+                </Pane>
+
+                <!-- Decorative Image -->
+                <ImageView fitHeight="97.0" fitWidth="256.0" layoutX="450.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/medical Staff.png"/>
+                    </image>
+                </ImageView>
+
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

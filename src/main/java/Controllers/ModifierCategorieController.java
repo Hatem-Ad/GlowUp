@@ -19,10 +19,8 @@ public class ModifierCategorieController {
 
     private Categorie categorie;
 
-    // Méthode pour initialiser les champs avec les données de la catégorie à modifier
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
-        // Pré-remplir les champs de la fenêtre modale avec les données existantes
         txtIdCategorie.setText(String.valueOf(categorie.getId()));
         txtNomCategorie.setText(categorie.getName());
         txtDescriptionCategorie.setText(categorie.getDescription());
@@ -30,34 +28,54 @@ public class ModifierCategorieController {
 
     @FXML
     void ModifierCategorie(ActionEvent event) {
+        if (!isValidInput()) {
+            return; // Arrête l'exécution si la saisie est invalide
+        }
+
         try {
-            // Récupérer les données saisies dans les champs
             int idCategorie = Integer.parseInt(txtIdCategorie.getText());
             String nomCategorie = txtNomCategorie.getText();
             String descriptionCategorie = txtDescriptionCategorie.getText();
 
-            // Créer un objet Categorie avec les nouvelles données
             Categorie updatedCategorie = new Categorie(idCategorie, nomCategorie, descriptionCategorie);
-
-            // Appeler la méthode de mise à jour du service
             CategorieService serviceCategorie = new CategorieService();
             boolean success = serviceCategorie.update(updatedCategorie);
 
-            // Afficher un message de succès ou d'erreur
             if (success) {
-                System.out.println("Catégorie modifiée avec succès !");
-                showAlert("Succès", "Catégorie modifié avec succès.", Alert.AlertType.INFORMATION);
+                showAlert("Succès", "Catégorie modifiée avec succès.", Alert.AlertType.INFORMATION);
             } else {
-                System.out.println("Erreur lors de la modification de la catégorie.");
                 showAlert("Erreur", "Erreur lors de la modification de la catégorie.", Alert.AlertType.ERROR);
             }
 
-        } catch (NumberFormatException e) {
-            System.out.println("Veuillez entrer un ID valide.");
         } catch (SQLException e) {
-            System.out.println("Erreur lors de la modification de la catégorie : " + e.getMessage());
+            showAlert("Erreur", "Erreur SQL : " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+
+    private boolean isValidInput() {
+        String nomCategorie = txtNomCategorie.getText().trim();
+        String descriptionCategorie = txtDescriptionCategorie.getText().trim();
+
+        try {
+            Integer.parseInt(txtIdCategorie.getText());
+        } catch (NumberFormatException e) {
+            showAlert("Erreur", "L'ID doit être un nombre valide.", Alert.AlertType.ERROR);
+            return false;
+        }
+
+        if (nomCategorie.isEmpty()) {
+            showAlert("Erreur", "Le nom de la catégorie ne doit contenir que des lettres.", Alert.AlertType.ERROR);
+            return false;
+        }
+
+        if (descriptionCategorie.isEmpty() ) {
+            showAlert("Erreur", "La description doit contenir entre 1 et 255 caractères.", Alert.AlertType.ERROR);
+            return false;
+        }
+
+        return true;
+    }
+
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

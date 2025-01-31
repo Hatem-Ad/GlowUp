@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="mainpane" prefHeight="515.0" prefWidth="718.0" style="-fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterEvenementsController">
+    <children>
+        <!-- Background Image -->
+        <ImageView fitHeight="515.0" fitWidth="718.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/mara.jpg" />
+            </image>
+        </ImageView>
+
+        <!-- Glassmorphic Panel -->
+        <Pane fx:id="L_message" layoutX="200.0" layoutY="100.0" prefHeight="320.0" prefWidth="320.0"
+              style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: white; -fx-border-width: 1px;">
+            <effect>
+                <DropShadow color="#00000055" radius="10" spread="0.2"/>
+            </effect>
+            <children>
+                <!-- Title -->
+                <Text fill="#ffffff" layoutX="40.0" layoutY="50.0" text="Ajouter un événement" wrappingWidth="250.0">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                </Text>
+
+                <!-- Event Name Input -->
+                <TextField fx:id="txtNomEvent" layoutX="40.0" layoutY="80.0" prefHeight="34.0" prefWidth="240.0" promptText="Nom de l'événement"
+                           style="-fx-background-radius: 15px; -fx-border-radius: 15px; -fx-border-color: #ffffff; -fx-border-width: 1px; -fx-background-color: rgba(255, 255, 255, 0.4); -fx-text-fill: white;" />
+
+                <!-- Event Description Input -->
+                <TextField fx:id="txtDescriptionEvent" layoutX="40.0" layoutY="130.0" prefHeight="34.0" prefWidth="240.0" promptText="Description de l'événement"
+                           style="-fx-background-radius: 15px; -fx-border-radius: 15px; -fx-border-color: #ffffff; -fx-border-width: 1px; -fx-background-color: rgba(255, 255, 255, 0.4); -fx-text-fill: white;" />
+
+
+                <!-- Add Button -->
+                <Button layoutX="90.0" layoutY="240.0" mnemonicParsing="false" onAction="#AjouterEvenement" prefHeight="34.0" prefWidth="140.0"
+                        style="-fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b); -fx-background-radius: 20px; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand;">
+                    <text>Add Event</text>
+                </Button>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
