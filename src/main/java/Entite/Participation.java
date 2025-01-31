@@ -6,7 +6,7 @@ public class Participation {
     private int challengeId;
     private int progression;
     private String status;
-
+   
     public String getStatus() {
         return status;
     }
